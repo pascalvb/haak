@@ -79,6 +79,11 @@ class Article
         return $this->category;
     }
 
+    public function getCategoryName(): ?string
+    {
+        return $this->category?->getName();
+    }
+
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
