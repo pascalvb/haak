@@ -28,7 +28,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
             $article->setTitle($faker->sentence(3));
             $article->setCaption($faker->realTextBetween(20, 200));
             $article->setText($faker->realTextBetween(300, 2500));
-            $article->setCreatedAt(\DateTimeImmutable::createFromMutable($faker->dateTimeThisDecade()));
+            $article->setCreatedAt(\DateTimeImmutable::createFromMutable($faker->dateTimeThisYear()));
             $article->setCategory($faker->randomElement($categories));
 
             foreach ($faker->randomElements($tags, $faker->numberBetween(1, 12)) as $tag) {
