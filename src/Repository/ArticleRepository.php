@@ -19,6 +19,16 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+    public function createQueryBuilderForElastica($entityAlias)
+    {
+        $qb = $this->createQueryBuilder($entityAlias);
+        $qb->select($entityAlias, 'tags', 'category');
+        $qb->leftJoin($entityAlias.'.tags', 'tags')
+            ->leftJoin($entityAlias.'.category', 'category');
+        return $qb;
+
+    }
+
     // /**
     //  * @return Article[] Returns an array of Article objects
     //  */
